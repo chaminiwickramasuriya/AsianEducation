@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.0.final using JasperReports Library version 6.4.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Students" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b255718d-f008-4fe2-9284-855101e83781">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Asian DataAdepter"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="Reg_Id" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{Reg_Id}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT asianeducationalcenter.student.`Stu_Id`,
+	asianeducationalcenter.student.`Stu_Name`,
+	asianeducationalcenter.student.`School`,
+	asianeducationalcenter.student.`Address`,
+	asianeducationalcenter.student.`Gender`,
+	asianeducationalcenter.student.`Age`,
+	asianeducationalcenter.student.`Date_of_birth`,
+	asianeducationalcenter.registration.`Reg_Id`,
+	asianeducationalcenter.registration.`Reg_Grade`,
+	asianeducationalcenter.subject.`Sub_Name`,
+	asianeducationalcenter.parent.`Pa_Name`,
+	asianeducationalcenter.student.`Mobile_No`
+FROM asianeducationalcenter.regsubject
+	INNER JOIN asianeducationalcenter.subject ON 
+	 asianeducationalcenter.regsubject.`Sub_Id` = asianeducationalcenter.subject.`Sub_Id` 
+	INNER JOIN asianeducationalcenter.registration ON 
+	 asianeducationalcenter.regsubject.`Reg_Id` = asianeducationalcenter.registration.`Reg_Id` 
+	INNER JOIN asianeducationalcenter.student ON 
+	 asianeducationalcenter.registration.`Stu_Id` = asianeducationalcenter.student.`Stu_Id` 
+	INNER JOIN asianeducationalcenter.parent ON 
+	 asianeducationalcenter.student.`Pr_Id` = asianeducationalcenter.parent.`Pr_Id`
+	 Where	asianeducationalcenter.registration.`Reg_Id`= $P{Reg_Id}]]>
+	</queryString>
+	<field name="Reg_Id" class="java.lang.String"/>
+	<field name="Stu_Id" class="java.lang.String"/>
+	<field name="Stu_Name" class="java.lang.String"/>
+	<field name="Pa_Name" class="java.lang.String"/>
+	<field name="Address" class="java.lang.String"/>
+	<field name="School" class="java.lang.String"/>
+	<field name="Mobile_No" class="java.lang.String"/>
+	<field name="Date_of_birth" class="java.lang.String"/>
+	<field name="Gender" class="java.lang.String"/>
+	<field name="Reg_Grade" class="java.lang.String"/>
+	<field name="Age" class="java.lang.String"/>
+	<field name="Sub_Name" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="79" backcolor="#3C3261" uuid="739003b9-7797-4847-97ee-5f09f3ee99dc"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" forecolor="#FCFAFA" uuid="4747f055-6b41-4c5d-be7a-5f45432a1c5e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Algerian" size="22"/>
+				</textElement>
+				<text><![CDATA[ASIAN  EDUCATIONAL  CENTER]]></text>
+			</staticText>
+			<image>
+				<reportElement x="460" y="0" width="91" height="79" uuid="b551d285-7af8-4831-916c-1ff21b4a3b8e"/>
+				<imageExpression><![CDATA["Logo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="375" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="30" width="92" height="20" uuid="1b57583b-5621-4ef9-bd3b-fb6ae64c74f0"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="3.0"/>
+				</textElement>
+				<text><![CDATA[Reg_Id        :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="120" y="29" width="98" height="20" uuid="7c30c0df-864f-41b9-a483-025d00168e4d"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Reg_Id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="90" width="100" height="22" uuid="49c4c2fd-db7a-45bf-875a-54c9962e3a0c"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Stu_Id}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="222" y="31" width="80" height="17" uuid="04ec059d-bdbf-4e76-a086-e9bc6aff276d"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="3.0"/>
+				</textElement>
+				<text><![CDATA[Stu_Name :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="310" y="30" width="245" height="20" uuid="7f2fff02-88cd-4cd0-8e18-f55d5b97af26"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Stu_Name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="118" width="91" height="22" uuid="45f219b7-3895-430a-a0ff-c362e2e8e0ec"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="3.0"/>
+				</textElement>
+				<text><![CDATA[Pa_Name   :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="120" width="338" height="19" uuid="94b3d3fd-4ec7-45d8-b016-90224c035432"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Pa_Name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="22" y="149" width="91" height="22" uuid="28324413-3ba2-48b1-b595-f4d97f33535a"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="3.0"/>
+				</textElement>
+				<text><![CDATA[Address     :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="150" width="268" height="21" uuid="dcfb7f8c-33c7-454a-9076-86008cddaac8"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="177" width="93" height="20" uuid="5a385573-224a-4458-9ebe-2e3e7d8e74ab"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="3.0"/>
+				</textElement>
+				<text><![CDATA[School        :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="180" width="298" height="20" uuid="c50519f1-aecc-4aab-af8f-1886ad12a7eb"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{School}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="210" width="92" height="20" uuid="be92a9a5-e6ab-484a-9861-7066961c33cf"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="3.0"/>
+				</textElement>
+				<text><![CDATA[Mobile_No :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="210" width="198" height="20" uuid="0a9222ec-bd4e-484b-a35d-ee483709187f"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Mobile_No}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="239" width="92" height="20" uuid="9ed6a061-890c-4977-9bc8-29797f58cd1e"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="3.0"/>
+				</textElement>
+				<text><![CDATA[Date_of_birth:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="240" width="158" height="19" uuid="3f58ae8f-01d6-4de5-8ae6-9005dda6d8c2"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Date_of_birth}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="21" y="269" width="90" height="20" uuid="9339ad6a-d1e2-4d13-ab89-5db31dcc7438"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="3.0"/>
+				</textElement>
+				<text><![CDATA[Gender      :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="148" y="270" width="118" height="19" uuid="303792da-d91d-4e6c-b837-905e91d452ae"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Gender}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="301" width="91" height="20" uuid="d6078c9b-bfd5-4df5-8f55-53690a9ae8f0"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="3.0"/>
+				</textElement>
+				<text><![CDATA[Reg_Grade :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="300" width="90" height="20" uuid="2351bccf-6906-429a-a538-44b9c1afb384"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Reg_Grade}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="330" width="91" height="20" uuid="7c4653e1-0e33-4495-8c77-9bf6f07e79c1"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="3.0"/>
+				</textElement>
+				<text><![CDATA[Age           :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="330" width="72" height="20" uuid="bc266b62-0c2a-4b71-99d9-f66e2ebc5608"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Age}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="20" y="355" width="91" height="20" uuid="414a2b36-9616-435f-9528-abaa46a4acf1"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="3.0"/>
+				</textElement>
+				<text><![CDATA[Sub_Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="91" width="94" height="20" uuid="798ff932-bf49-4aee-b56a-04991e630686"/>
+				<textElement>
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+					<paragraph lineSpacing="Single" lineSpacingSize="3.0"/>
+				</textElement>
+				<text><![CDATA[Stu_Id        :]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="83" y="0" width="139" height="20" uuid="02317044-b5b6-4440-bce8-1a33ab31656d"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Sub_Name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="270" height="20" uuid="92378cce-6807-4465-a020-6f80a1c5ce57"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Calisto MT" size="12"/>
+				</textElement>
+				<text><![CDATA[Asian Educational Center-Weligama.	]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="280" y="4" width="271" height="16" forecolor="#323F96" backcolor="#FFFFFF" uuid="ea575ea9-7910-4734-b11c-d8f9f1b4bc3f"/>
+				<textElement textAlignment="Right">
+					<font fontName="Calisto MT" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[	Not Walk...Not Drive...To Fly]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>
